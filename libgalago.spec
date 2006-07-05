@@ -1,18 +1,21 @@
 Summary:	Galago library
 Summary(pl):	Biblioteka Galago
 Name:		libgalago
-Version:	0.3.3
+Version:	0.5.1
 Release:	1
 License:	LGPL v2.1+
 Group:		Applications/System
 Source0:	http://www.galago-project.org/files/releases/source/libgalago/%{name}-%{version}.tar.gz
-# Source0-md5:	94d5223445deb1ed95973424d4958386
+# Source0-md5:	742fe2c3f1715eb7f7903c347521d4ee
 URL:		http://www.galago-project.org/
+BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	dbus-glib-devel >= 0.30
-BuildRequires:	glib2-devel >= 2.2.2
+BuildRequires:	dbus-glib-devel >= 0.62
+BuildRequires:	glib2-devel >= 1:2.12.0
+BuildRequires:	gtk-doc >= 1.6
+BuildRequires:	libtool
 BuildRequires:	pkgconfig
-Requires:	dbus-glib >= 0.30
+Requires:	dbus-glib >= 0.62
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -29,7 +32,7 @@ Summary(pl):	Pliki nag³ówkowe biblioteki libgalago
 License:	LGPL v2.1+
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	dbus-glib-devel >= 0.30
+Requires:	dbus-glib-devel >= 0.62
 
 %description devel
 Header files for libgalago-based programs development.
@@ -52,10 +55,17 @@ Statyczna biblioteka libgalago.
 
 %prep
 %setup -q
-cp -f /usr/share/automake/config.sub .
+%{__glib_gettextize}
+%{__libtoolize}
+%{__aclocal}
+%{__autoconf}
+%{__autoheader}
+%{__automake}
 %build
 
-%configure
+%configure \
+	--enable-gtk-doc \
+	--with-html-dir=%{_gtkdocdir}
 %{__make}
 
 %install
@@ -85,6 +95,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/lib*.la
 %{_pkgconfigdir}/*
 %{_includedir}/*
+%{_gtkdocdir}/%{name}
 
 %files static
 %defattr(644,root,root,755)
