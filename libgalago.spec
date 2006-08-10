@@ -53,6 +53,18 @@ Static libgalago library.
 %description static -l pl
 Statyczna biblioteka libgalago.
 
+%package apidocs
+Summary:	libgalago API documentation
+Summary(pl):	Dokumentacja API libgalago
+Group:		Documentation
+Requires:	gtk-doc-common
+
+%description apidocs
+libgalago API documentation.
+
+%description apidocs -l pl
+Dokumentacja API libgalago.
+
 %prep
 %setup -q
 %{__glib_gettextize}
@@ -95,8 +107,11 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/lib*.la
 %{_pkgconfigdir}/*
 %{_includedir}/*
-%{_gtkdocdir}/%{name}
 
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/lib*.a
+
+%files apidocs
+%defattr(644,root,root,755)
+%{_gtkdocdir}/%{name}
