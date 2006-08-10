@@ -2,7 +2,7 @@ Summary:	Galago library
 Summary(pl):	Biblioteka Galago
 Name:		libgalago
 Version:	0.5.1
-Release:	2
+Release:	3
 License:	LGPL v2.1+
 Group:		Applications/System
 Source0:	http://www.galago-project.org/files/releases/source/libgalago/%{name}-%{version}.tar.bz2
@@ -10,12 +10,12 @@ Source0:	http://www.galago-project.org/files/releases/source/libgalago/%{name}-%
 URL:		http://www.galago-project.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	dbus-glib-devel >= 0.62
-BuildRequires:	glib2-devel >= 1:2.12.0
-BuildRequires:	gtk-doc >= 1.6
+BuildRequires:	dbus-glib-devel >= 0.71
+BuildRequires:	glib2-devel >= 1:2.12.1
+BuildRequires:	gtk-doc >= 1.7
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
-Requires:	dbus-glib >= 0.62
+Requires:	dbus-glib >= 0.71
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -32,7 +32,7 @@ Summary(pl):	Pliki nag³ówkowe biblioteki libgalago
 License:	LGPL v2.1+
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	dbus-glib-devel >= 0.62
+Requires:	dbus-glib-devel >= 0.71
 
 %description devel
 Header files for libgalago-based programs development.
@@ -61,7 +61,6 @@ Statyczna biblioteka libgalago.
 %{__autoconf}
 %{__autoheader}
 %{__automake}
-LDFLAGS="%{rpmldflags} -Wl,--as-needed"
 %build
 
 %configure \
