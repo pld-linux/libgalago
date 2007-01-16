@@ -11,6 +11,7 @@ URL:		http://www.galago-project.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	dbus-glib-devel >= 0.71
+BuildRequires:	gettext-devel
 BuildRequires:	glib2-devel >= 1:2.12.1
 BuildRequires:	gtk-doc >= 1.7
 BuildRequires:	libtool
@@ -67,14 +68,16 @@ Dokumentacja API libgalago.
 
 %prep
 %setup -q
+
+%build
 %{__glib_gettextize}
 %{__libtoolize}
 %{__aclocal}
 %{__autoconf}
 %{__autoheader}
+# ??? glib-gettextize already called before
 %{__gettextize}
 %{__automake}
-%build
 
 %configure \
 	--enable-gtk-doc \
