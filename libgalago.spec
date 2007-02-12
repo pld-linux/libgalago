@@ -1,5 +1,5 @@
 Summary:	Galago library
-Summary(pl):	Biblioteka Galago
+Summary(pl.UTF-8):   Biblioteka Galago
 Name:		libgalago
 Version:	0.5.1
 Release:	4
@@ -23,13 +23,13 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 libgalago is a part of Galago Project (D-BUS-based desktop presence
 framework).
 
-%description -l pl
-libgalago jest czÍ∂ci± Projektu Galago (bazowany na D-BUSie szkielet
-stanu obecno∂ci).
+%description -l pl.UTF-8
+libgalago jest czƒô≈õciƒÖ Projektu Galago (bazowany na D-BUSie szkielet
+stanu obecno≈õci).
 
 %package devel
 Summary:	libgalago header files
-Summary(pl):	Pliki nag≥Ûwkowe biblioteki libgalago
+Summary(pl.UTF-8):   Pliki nag≈Ç√≥wkowe biblioteki libgalago
 License:	LGPL v2.1+
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
@@ -38,12 +38,12 @@ Requires:	dbus-glib-devel >= 0.71
 %description devel
 Header files for libgalago-based programs development.
 
-%description devel -l pl
-Pliki nag≥Ûwkowe do tworzenia programÛw opartych o libgalago.
+%description devel -l pl.UTF-8
+Pliki nag≈Ç√≥wkowe do tworzenia program√≥w opartych o libgalago.
 
 %package static
 Summary:	Static libgalago library
-Summary(pl):	Statyczna biblioteka libgalago
+Summary(pl.UTF-8):   Statyczna biblioteka libgalago
 License:	LGPL v2.1+
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
@@ -51,19 +51,19 @@ Requires:	%{name}-devel = %{version}-%{release}
 %description static
 Static libgalago library.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Statyczna biblioteka libgalago.
 
 %package apidocs
 Summary:	libgalago API documentation
-Summary(pl):	Dokumentacja API libgalago
+Summary(pl.UTF-8):   Dokumentacja API libgalago
 Group:		Documentation
 Requires:	gtk-doc-common
 
 %description apidocs
 libgalago API documentation.
 
-%description apidocs -l pl
+%description apidocs -l pl.UTF-8
 Dokumentacja API libgalago.
 
 %prep
