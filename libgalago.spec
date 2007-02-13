@@ -1,5 +1,5 @@
 Summary:	Galago library
-Summary(pl.UTF-8):   Biblioteka Galago
+Summary(pl.UTF-8):	Biblioteka Galago
 Name:		libgalago
 Version:	0.5.1
 Release:	4
@@ -29,7 +29,7 @@ stanu obecności).
 
 %package devel
 Summary:	libgalago header files
-Summary(pl.UTF-8):   Pliki nagłówkowe biblioteki libgalago
+Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki libgalago
 License:	LGPL v2.1+
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
@@ -43,7 +43,7 @@ Pliki nagłówkowe do tworzenia programów opartych o libgalago.
 
 %package static
 Summary:	Static libgalago library
-Summary(pl.UTF-8):   Statyczna biblioteka libgalago
+Summary(pl.UTF-8):	Statyczna biblioteka libgalago
 License:	LGPL v2.1+
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
@@ -56,7 +56,7 @@ Statyczna biblioteka libgalago.
 
 %package apidocs
 Summary:	libgalago API documentation
-Summary(pl.UTF-8):   Dokumentacja API libgalago
+Summary(pl.UTF-8):	Dokumentacja API libgalago
 Group:		Documentation
 Requires:	gtk-doc-common
 
