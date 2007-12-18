@@ -90,6 +90,8 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+install -d $RPM_BUILD_ROOT%{_libdir}/galago
+
 rm -rf $RPM_BUILD_ROOT%{_datadir}/autopackage
 
 %find_lang %{name}
@@ -104,6 +106,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
+%dir %{_libdir}/galago
 
 %files devel
 %defattr(644,root,root,755)
