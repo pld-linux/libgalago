@@ -11,6 +11,7 @@ URL:		http://www.galago-project.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	dbus-glib-devel >= 0.71
+BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gettext-devel
 BuildRequires:	glib2-devel >= 1:2.12.1
 BuildRequires:	gtk-doc >= 1.7
