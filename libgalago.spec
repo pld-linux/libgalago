@@ -2,17 +2,19 @@ Summary:	Galago library
 Summary(pl.UTF-8):	Biblioteka Galago
 Name:		libgalago
 Version:	0.5.2
-Release:	1
+Release:	2
 License:	LGPL v2.1+
 Group:		Applications/System
 Source0:	http://www.galago-project.org/files/releases/source/libgalago/%{name}-%{version}.tar.bz2
 # Source0-md5:	47f27f58dd8b0e46d9d2e037c51063ed
+Patch0:		pkgconfig.patch
 URL:		http://www.galago-project.org/
-BuildRequires:	autoconf
+BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
+BuildRequires:	dbus-devel >= 0.71
 BuildRequires:	dbus-glib-devel >= 0.71
 BuildRequires:	docbook-dtd412-xml
-BuildRequires:	gettext-devel
+BuildRequires:	gettext-devel >= 0.18.1
 BuildRequires:	glib2-devel >= 1:2.12.1
 BuildRequires:	gtk-doc >= 1.7
 BuildRequires:	libtool
@@ -69,15 +71,14 @@ Dokumentacja API libgalago.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
-%{__glib_gettextize}
+%{__gettextize}
 %{__libtoolize}
 %{__aclocal}
 %{__autoconf}
 %{__autoheader}
-# ??? glib-gettextize already called before
-%{__gettextize}
 %{__automake}
 
 %configure \
@@ -93,7 +94,8 @@ rm -rf $RPM_BUILD_ROOT
 
 install -d $RPM_BUILD_ROOT%{_libdir}/galago
 
-rm -rf $RPM_BUILD_ROOT%{_datadir}/autopackage
+%{__rm} -r $RPM_BUILD_ROOT%{_datadir}/autopackage
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/*.la
 
 %find_lang %{name}
 
@@ -106,19 +108,19 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS
-%attr(755,root,root) %{_libdir}/lib*.so.*.*
+%attr(755,root,root) %{_libdir}/libgalago.so.*.*
+%attr(755,root,root) %ghost %{_libdir}/libgalago.so.3
 %dir %{_libdir}/galago
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/lib*.so
-%{_libdir}/lib*.la
-%{_pkgconfigdir}/*
-%{_includedir}/*
+%attr(755,root,root) %{_libdir}/libgalago.so
+%{_pkgconfigdir}/libgalago.pc
+%{_includedir}/libgalago
 
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/lib*.a
+%{_libdir}/libgalago.a
 
 %files apidocs
 %defattr(644,root,root,755)
