@@ -14,7 +14,7 @@ BuildRequires:	automake
 BuildRequires:	dbus-devel >= 0.71
 BuildRequires:	dbus-glib-devel >= 0.71
 BuildRequires:	docbook-dtd412-xml
-BuildRequires:	gettext-devel >= 0.18.1
+BuildRequires:	gettext-tools >= 0.18.1
 BuildRequires:	glib2-devel >= 1:2.12.1
 BuildRequires:	gtk-doc >= 1.7
 BuildRequires:	libtool
