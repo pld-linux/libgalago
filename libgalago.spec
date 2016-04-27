@@ -2,7 +2,7 @@ Summary:	Galago library
 Summary(pl.UTF-8):	Biblioteka Galago
 Name:		libgalago
 Version:	0.5.2
-Release:	3
+Release:	4
 License:	LGPL v2.1+
 Group:		Applications/System
 Source0:	http://www.galago-project.org/files/releases/source/libgalago/%{name}-%{version}.tar.bz2
@@ -62,6 +62,9 @@ Summary:	libgalago API documentation
 Summary(pl.UTF-8):	Dokumentacja API libgalago
 Group:		Documentation
 Requires:	gtk-doc-common
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description apidocs
 libgalago API documentation.
