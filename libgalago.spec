@@ -5,10 +5,11 @@ Version:	0.5.2
 Release:	4
 License:	LGPL v2.1+
 Group:		Applications/System
-Source0:	http://www.galago-project.org/files/releases/source/libgalago/%{name}-%{version}.tar.bz2
+Source0:	https://galago-project.org/files/releases/source/libgalago/%{name}-%{version}.tar.bz2
 # Source0-md5:	47f27f58dd8b0e46d9d2e037c51063ed
 Patch0:		pkgconfig.patch
-URL:		http://www.galago-project.org/
+Patch1:		%{name}-gettext.patch
+URL:		https://www.galago-project.org/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
 BuildRequires:	dbus-devel >= 0.71
@@ -19,6 +20,7 @@ BuildRequires:	glib2-devel >= 1:2.12.1
 BuildRequires:	gtk-doc >= 1.7
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
+BuildRequires:	rpm-build >= 4.6
 Requires:	dbus-glib >= 0.71
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -73,15 +75,19 @@ Dokumentacja API libgalago.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
+
+# use newer system macro
+%{__sed} -i -e '/^AC_DEFUN(\[GTK_DOC_CHECK\]/,/^\])/ d' acinclude.m4
 
 %build
+%{__gtkdocize}
 %{__gettextize}
 %{__libtoolize}
-%{__aclocal}
+%{__aclocal} -I m4
 %{__autoconf}
 %{__autoheader}
 %{__automake}
-
 %configure \
 	--enable-gtk-doc \
 	--with-html-dir=%{_gtkdocdir}
